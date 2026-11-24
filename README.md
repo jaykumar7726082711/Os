@@ -1,10 +1,10 @@
 # 4. Write a program(using fork () and/or exec () commands) where parent and child execute:
 
-i. same program, same code.
+## i. same program, same code.
 
-ii same program, different code.
+## ii same program, different code.
 
-iii. before terminating, the parent waits for the child to finish its task.
+## iii. before terminating, the parent waits for the child to finish its task.
 
 # 5. Write a program to report behaviour of Linux kernel including kernel version, CPU type andCPU information.
 
