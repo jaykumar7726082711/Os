@@ -153,10 +153,6 @@ int main()
 ```
 # 7. Write a program to copy files using system calls.
 ```
-
-```
-# 8. Write a program to implement First Come First Serve (FCFS) scheduling algorithm.
-```
 #include <iostream>
 #include <fcntl.h>
 #include <unistd.h>
@@ -201,6 +197,55 @@ int main()
     close(destination);
 
     cout << "File copied successfully!" << endl;
+
+    return 0;
+}
+```
+# 8. Write a program to implement First Come First Serve (FCFS) scheduling algorithm.
+```
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n;
+    int bt[20], wt[20], tat[20];
+
+    cout << "Enter number of processes: ";
+    cin >> n;
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << "Enter Burst Time for P" << i + 1 << ": ";
+        cin >> bt[i];
+    }
+
+    wt[0] = 0;
+
+    for (int i = 1; i < n; i++)
+    {
+        wt[i] = wt[i - 1] + bt[i - 1];
+    }
+
+    float avgWT = 0, avgTAT = 0;
+
+    cout << "\nProcess\tBT\tWT\tTAT\n";
+
+    for (int i = 0; i < n; i++)
+    {
+        tat[i] = wt[i] + bt[i];
+
+        avgWT += wt[i];
+        avgTAT += tat[i];
+
+        cout << "P" << i + 1 << "\t"
+             << bt[i] << "\t"
+             << wt[i] << "\t"
+             << tat[i] << endl;
+    }
+
+    cout << "\nAverage Waiting Time = " << avgWT / n;
+    cout << "\nAverage Turnaround Time = " << avgTAT / n;
 
     return 0;
 }
